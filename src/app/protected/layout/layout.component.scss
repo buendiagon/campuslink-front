@@ -1,0 +1,104 @@
+@import 'variables';
+
+$heightHeader: 64px;
+$imgUserSize: 45px;
+
+.header{
+    height: $heightHeader;
+    background-color: $blueLighter;
+    display: flex;
+    justify-content: space-between;
+    .r-content{
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-right: 40px;
+        .img-user{
+            height: $imgUserSize;
+            width: $imgUserSize;
+            border-radius: 50%;
+        }
+        .notifications{
+            height: $imgUserSize;
+            width: $imgUserSize;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            .not-icon{
+                font-size: 40px;
+                height: 40px;
+                width: 40px;
+                color: #50575E;
+            }
+        }
+    }
+
+    .c-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .search-field{
+            width: 500px;
+            right: 20px;
+        }
+    }
+
+    .l-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .logo{
+            .logo-1{
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .logo-2{
+                font-size: 16px;
+                font-weight: 600;
+            }
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .title{
+            font-size: 20px;
+            font-weight: 600;
+            color: $gray;
+        }
+    }
+
+}
+
+.carrer-field{
+    width: 150px;
+}
+
+.gray{
+    color: $gray !important;
+}
+
+.blackStrong{
+    color: $blackStrong !important;
+}
+
+::ng-deep .mat-badge-content{
+    right: 1px !important;
+    top: 1px !important;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper{
+    display: none !important;
+}
+
+::ng-deep .mat-mdc-form-field-infix{
+    padding-bottom: 0 !important;
+}
+
+::ng-deep .mat-mdc-form-field-hint-wrapper{
+    display: none !important;
+}
+
+::ng-deep .mat-mdc-select-min-line{
+    color: $blackStrong !important;
+}

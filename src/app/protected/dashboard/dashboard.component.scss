@@ -1,0 +1,23 @@
+@import 'variables';
+.body{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    .sep{
+        width: 1px;
+        background-color: $blueLighter;
+    }
+    .l-content{
+        width: 20%;
+        height: calc(100vh - 64px);
+    }
+    .c-content{
+        width: 60%;
+        min-width: 33%;
+        border-right: 1px thin $gray;
+    }
+    .r-content{
+        width: 20%;
+    }
+}

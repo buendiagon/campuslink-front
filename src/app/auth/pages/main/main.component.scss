@@ -1,0 +1,38 @@
+@import 'variables';
+
+$screenHeight: 100vh;
+$footerHeight: 32px;
+$containerHeight: 600px;
+$containerWidht: 900px;
+
+
+
+.container{
+    height: $containerHeight;
+    width: $containerWidht;
+    border-radius: 25px;
+    box-shadow: 2px 2px 25px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+}
+
+.p-content{
+    display: flex;
+    height: calc($screenHeight - $footerHeight);
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: $footerHeight;
+    width: 100%;
+    background-color: $blueLighter;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content{
+    color: $blackLight;
+}

@@ -1,0 +1,49 @@
+
+<div class="container">
+    <div class="l-content">
+
+        <div class="logo">
+            <span class="name">
+                CampusLink
+            </span>
+        </div>
+
+        <div class="welcome">
+            <span class="welcome-text">
+                Bienvenido.
+            </span>
+        </div>
+        <form class="form" [formGroup]="login" (ngSubmit)="iniciarSesion()">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input formControlName="user" matInput placeholder="nombre de usuario.">
+                <mat-icon matSuffix>account_circle</mat-icon>
+              </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <button type="submit" class="p-button" color="primary" mat-raised-button>Ingresa aqui</button>
+        </form>
+        <div class="f-password">
+            ¿Has olvidado tu contraseña?
+        </div>
+    </div>
+    <div class="r-content">
+        <div class="r-header">
+            <span class="r-header-text">
+                ¿No tienes cuenta?
+            </span>
+        </div>
+        <div class="r-body">
+            <span class="r-body-text">
+                Registrate para poder acceder a todos los beneficios de la plataforma.
+            </span>
+            <button (click)="goToRegister()" class="register-button" color="white" mat-raised-button>Registrarse</button>
+        </div>
+    </div>
