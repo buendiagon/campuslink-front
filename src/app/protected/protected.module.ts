@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material.module';
 import { PublicationsComponent } from './dashboard/components/home/components/publications/publications.component';
 import { PublicationComponent } from './dashboard/components/publication/publication.component';
 import { HomeComponent } from './dashboard/components/home/home.component';
+import { SideContentComponent } from './dashboard/components/side-content/side-content.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HomeComponent } from './dashboard/components/home/home.component';
     LayoutComponent,
     HomeComponent,
     PublicationComponent,
-    PublicationsComponent
+    PublicationsComponent,
+    SideContentComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Publication } from './interfaces/publication.interface';
 
 @Component({
@@ -7,6 +8,13 @@ import { Publication } from './interfaces/publication.interface';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  constructor (
+    private authServcie : AuthService
+  ) { }
+
+  user = this.authServcie.usuario;
+
 
   publications: Publication[] = [
     {

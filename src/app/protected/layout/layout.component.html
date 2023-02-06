@@ -10,30 +10,40 @@
             </div>
         </div>
 
-        <mat-form-field class="carrer-field" appearance="fill">
+        <!-- <mat-form-field class="carrer-field" appearance="fill">
             <mat-label>Carrera</mat-label>
             <mat-select [(ngModel)]="selectedCarrer" name="food">
               <mat-option *ngFor="let carrera of carreras" [value]="carrera.nombre">
                 {{carrera.nombre}}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-form-field> -->
 
     </div>
     <div class="c-content">
-        <mat-form-field class="search-field gray">
+        <!-- <mat-form-field class="search-field gray">
             <mat-label>Buscar...</mat-label>
             <input class="blackStrong" matInput type="text" [(ngModel)]="value">
             <button class="gray" matSuffix mat-icon-button aria-label="Clear" (click)="search()">
               <mat-icon>search</mat-icon>
             </button>
-          </mat-form-field>
+          </mat-form-field> -->
     </div>
     <div class="r-content">
-        <div class="notifications">
+      <mat-form-field class="search-field gray">
+        <mat-label>Buscar...</mat-label>
+        <input class="blackStrong" matInput type="text" [(ngModel)]="value">
+        <button class="gray" matSuffix mat-icon-button aria-label="Clear" (click)="search()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+        <!-- <div class="notifications">
         <mat-icon class="not-icon" matBadge="15" matBadgeColor="warn">notifications</mat-icon>
-        </div>
+        </div> -->
         <img class="img-user" src="assets/icons/no-user-image.png" alt="">
-        
-    </div> 
+        <div class="salir" (click)="logOut()">
+
+          <mat-icon class="salir-icon">logout</mat-icon>
+        </div>
+    </div>
 </header>

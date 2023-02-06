@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Carrera } from './interfaces/carrera.interface';
 
 @Component({
@@ -7,6 +9,12 @@ import { Carrera } from './interfaces/carrera.interface';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) { }
+
   value: string = '';
   carreras: Carrera[] = [
     {id: 1, nombre: 'Ingeniería en Sistemas Computacionales'},
@@ -21,5 +29,10 @@ export class LayoutComponent {
   }
 
   selectCarrera(carrera: Carrera){}
+  
+  logOut(){
+    window.location.assign('/auth');
+    this.authService.logOut();
+  }
 
 }
