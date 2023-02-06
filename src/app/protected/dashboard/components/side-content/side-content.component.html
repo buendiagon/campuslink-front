@@ -1,0 +1,19 @@
+<div class="body">
+    <div class="home">
+        Home
+    </div>
+    <div class="sep"></div>
+    <!-- <span class="carrera">
+        Carreras
+    </span> -->
+    <div class="second-title">
+        <span>
+            Carreras
+        </span>
+    </div>
+    <div class="carreras" *ngFor="let carrera of carreras">
+        <span [class]="carrera.id == selectedId ? 'selected' : ''" (click)="selectedId = carrera.id">
+            {{carrera.nombre}}
+        </span>
+    </div>
+</div>

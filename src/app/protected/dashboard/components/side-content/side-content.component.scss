@@ -1,0 +1,61 @@
+@import 'variables';
+
+.body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .home{
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+        padding: 10px;
+        height: 40px;
+        font-size: 32px;
+        font-weight: 500;
+        color: $gray;
+        border: 2px solid $blueLighter;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .carrera{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        color: $blackStrong;
+        font-size: 20px;
+    }
+    .carreras{
+        display: flex;
+        margin: 5px;
+        margin-left: 10px;
+        height: 40px;
+        color: #666666;
+        span:hover {
+            cursor: pointer;
+            color: $blueLighter;
+            font-weight: 300;
+        }
+        .selected{
+            color: $blueLighter;
+            font-weight: 900;
+            border-radius: 5px;
+        }
+    }
+
+}
+
+.second-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $blueLighter;
+    span{
+        color: $gray;
+        font-size: 20px;
+        font-weight: 500;
+    }
+}

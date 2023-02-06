@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    baseUrl: 'http://localhost:3000/api'
+    authPublic: 'https://campuslink-authorization.herokuapp.com/auth/public/api',
+    auth: 'https://campuslink-authorization.herokuapp.com/auth/api'
 }
