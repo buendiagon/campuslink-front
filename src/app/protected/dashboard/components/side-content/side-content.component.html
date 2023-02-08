@@ -13,7 +13,7 @@
     </div>
     <div class="carreras" *ngFor="let carrera of carreras">
         <span [class]="carrera.id == selectedId ? 'selected' : ''" (click)="selectedId = carrera.id">
-            {{carrera.nombre}}
+            {{carrera.name}}
         </span>
     </div>
 </div>

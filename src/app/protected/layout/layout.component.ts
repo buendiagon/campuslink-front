@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Carrera } from './interfaces/carrera.interface';
@@ -8,12 +8,18 @@ import { Carrera } from './interfaces/carrera.interface';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
     private authService: AuthService,
   ) { }
+
+  userPhoto : string = '';
+
+  ngOnInit(): void {
+    this.userPhoto = this.authService.usuario.userPhotoUrl;
+  }
 
   value: string = '';
   carreras: Carrera[] = [

@@ -40,7 +40,7 @@
         <!-- <div class="notifications">
         <mat-icon class="not-icon" matBadge="15" matBadgeColor="warn">notifications</mat-icon>
         </div> -->
-        <img class="img-user" src="assets/icons/no-user-image.png" alt="">
+        <img class="img-user" [src]=" userPhoto ? userPhoto : 'assets/icons/no-user-image.png'" alt="">
         <div class="salir" (click)="logOut()">
 
           <mat-icon class="salir-icon">logout</mat-icon>

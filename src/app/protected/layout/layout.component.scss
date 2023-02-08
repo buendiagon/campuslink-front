@@ -4,6 +4,9 @@ $heightHeader: 64px;
 $imgUserSize: 45px;
 
 .header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     height: $heightHeader;
     background-color: $blueLighter;
     display: flex;
