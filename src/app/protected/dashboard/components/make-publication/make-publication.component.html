@@ -1,0 +1,55 @@
+<div class="form-content">
+
+    <span class="title">
+        Crear publicacion!
+    </span>
+
+    <form class="form" [formGroup]="publication" (ngSubmit)="CrearPublicacion()">
+
+
+
+
+
+        <mat-form-field appearance="fill" class="form-title">
+            <mat-label>Titulo</mat-label>
+            <input formControlName="title" matInput maxlength="50">
+        </mat-form-field>
+
+        <mat-form-field class="carrer-form" appearance="fill">
+            <mat-label>carrera</mat-label>
+            <input type="text"
+                    placeholder="elige una carrera"
+                    matInput
+                    formControlName="career"
+                    [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option 
+                *ngFor="let career of filteredOptions | async" 
+                value
+                [value]="career.name">
+                {{career.name}}
+                </mat-option>
+            </mat-autocomplete>
+            </mat-form-field>
+
+        <mat-form-field class="example-full-width"
+        >
+            <mat-label>Descripcion</mat-label>
+            <textarea 
+            maxlength="400"
+            cols="7"
+            rows="7"
+            matInput placeholder="Descripcion de la pregunta..."
+            formControlName="description"
+            >
+        </textarea>
+
+        <mat-hint class="char-counter">
+            Holi
+          </mat-hint>
+        </mat-form-field>
+
+
+        <button type="submit" class="p-button" color="primary" mat-raised-button>Publicar</button>
+    </form>
+</div>

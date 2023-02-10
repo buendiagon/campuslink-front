@@ -31,7 +31,6 @@ export class LayoutComponent implements OnInit {
   selectedCarrer!: Carrera;
 
   search(){
-    console.log(this.value);
   }
 
   selectCarrera(carrera: Carrera){}

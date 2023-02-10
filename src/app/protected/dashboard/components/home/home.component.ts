@@ -1,68 +1,64 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { Publication } from './interfaces/publication.interface';
+import { Input, Publication } from '../interfaces/inputs.interface';
+import { CarrerService } from '../services/carrer.service';
+import { PublicationsService } from '../services/publications.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  inputs! : Input;
+
+  publications!: Publication[];
 
   constructor (
-    private authServcie : AuthService
+    private authServcie : AuthService,
+    private publicationService : PublicationsService,
+    private urlRouter: ActivatedRoute,
+    private router: Router,
+    private careerService: CarrerService
+    
   ) { }
 
-  user = this.authServcie.usuario;
+  ngOnInit(): void {
 
+    this.urlRouter.paramMap.subscribe( params => {
+      const criterios = params.get('params');
+      this.busqueda(criterios || '');
+    })
 
-  publications: Publication[] = [
-    {
-      id: '1',
-      userName: 'Juan',
-      title: 'Titulo 1',
-      description: 'Descripcion 1',
-      image: 'https://picsum.photos/200/300',
-      created_at: new Date(),
-      principalcarrer: 'Ingenieria'
-    },
-    {
-      id: '2',
-      userName: 'Pedro',
-      title: 'Titulo 2',
-      description: 'Descripcion 2',
-      image: 'https://picsum.photos/200/300',
-      created_at: new Date(),
-      principalcarrer: 'Ingenieria'
-    },
-    {
-      id: '3',
-      userName: 'Maria',
-      title: 'Titulo 3',
-      description: 'Descripcion 3',
-      image: 'https://picsum.photos/200/300',
-      created_at: new Date(),
-      principalcarrer: 'Ingenieria'
-    },
-    {
-      id: '4',
-      userName: 'Jose',
-      title: 'Titulo 4',
-      description: 'Descripcion 4',
-      image: 'https://picsum.photos/200/300',
-      created_at: new Date(),
-      principalcarrer: 'Ingenieria'
-    },
-    {
-      id: '5',
-      userName: 'Luis',
-      title: 'Titulo 5',
-      description: 'Descripcion 5',
-      image: 'https://picsum.photos/200/300',
-      created_at: new Date(),
-      principalcarrer: 'Ingenieria'
+  }  
+
+  busqueda(criterio: string) {
+    if(criterio.includes('career-')) {
+      const consulta = criterio.split('-')[1]
+      this.careerService.selectedId.next(Number(consulta));
+      this.publicationService.getPublicationsByCareer(consulta).subscribe( (resp: Input) => {
+        this.inputs = resp
+        this.publications = this.inputs.publications;
+      })
     }
-  ]
+    else{
+      this.router.navigate(['/dashboard/home/initial']);
+      this.loadAllPublications();
+    }
+  }
+
+  loadAllPublications(){
+    this.publicationService.getPublications(0, 10).subscribe( (resp: Input) => {
+      this.inputs = resp
+      this.publications = this.inputs.publications;
+    })
+  }
+
+  goToCreatePublication(){
+    this.router.navigate(['/dashboard/create-publication']);
+  }
 
   
 

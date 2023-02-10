@@ -1,5 +1,5 @@
-<div class="body">
-    <div class="home">
+<div class="body-lat">
+    <div class="home" (click)="goToInitial()">
         Home
     </div>
     <div class="sep"></div>
@@ -12,7 +12,7 @@
         </span>
     </div>
     <div class="carreras" *ngFor="let carrera of carreras">
-        <span [class]="carrera.id == selectedId ? 'selected' : ''" (click)="selectedId = carrera.id">
+        <span [class]="carrera.id == selectedId ? 'selected' : ''" (click)="select(carrera.id)">
             {{carrera.name}}
         </span>
     </div>

@@ -1,12 +1,18 @@
-<app-layout></app-layout>
+<app-layout class="layout"></app-layout>
 
 <div class="body">
-    <div class="side-content">
-        <app-side-content></app-side-content>
-    </div>
-    <div class="main-cintent">
-
-    <router-outlet>
-    </router-outlet>
-    </div>
+    <ng-container *ngIf="section == 'home'">
+        <div class="side-content">
+            <app-side-content></app-side-content>
+        </div>
+        <div class="main-cintent">
+    
+        <router-outlet>
+        </router-outlet>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="section == 'create-publication'">
+        <router-outlet>
+        </router-outlet>
+    </ng-container>
 </div>

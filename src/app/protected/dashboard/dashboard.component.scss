@@ -2,16 +2,20 @@
 .body{
     display: flex;
     flex-direction: row;
-    height: calc(100vh - 64px);
+    height: max-content;
     width: 100%;
+    min-height: calc(100vh - 64px);
+    position: sticky;
     .sep{
         width: 1px;
         background-color: $blueLighter;
     }
     .side-content{
         width: 20%;
+        border-right: 1px solid $blueLighter;
     }
     .main-cintent{
         width: 80%;
     }
 }
+

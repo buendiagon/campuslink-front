@@ -1,16 +1,48 @@
+@import 'variables';
+
 .body{
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    .sup{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      border-bottom: 1px solid $blueLighter;
+      .title{
+        color: #808080;
+        font-size: 26px;
+      }
+    }
 }
 
-.example-card {
-    max-width: 800px;
-    height: 160px;
+.create-publication{
+  position: relative;
+  color: #808080;
+  right: 0px;
+  top: 0px;
+  .add-icon{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
   }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+  .add-icon:hover{
+    cursor: pointer;
+    color: $blueLighter;
   }
+}
+
+.publication{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
