@@ -10,7 +10,7 @@ import { PublicationComponent } from './dashboard/components/publication/publica
 import { HomeComponent } from './dashboard/components/home/home.component';
 import { SideContentComponent } from './dashboard/components/side-content/side-content.component';
 import { MakePublicationComponent } from './dashboard/components/make-publication/make-publication.component';
-
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { MakePublicationComponent } from './dashboard/components/make-publicatio
     ProtectedRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule
   ]
 })
 export class ProtectedModule { }

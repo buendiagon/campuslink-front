@@ -38,18 +38,55 @@
         margin-left: 10px;
         height: 40px;
         color: #666666;
+        flex-direction: column;
         span:hover {
             cursor: pointer;
             color: $blueLighter;
             font-weight: 300;
         }
-        .selected{
-            color: $blueLighter;
-            font-weight: 900;
-            border-radius: 5px;
-        }
+
     }
 
+}
+
+.selected{
+    color: $blueLighter !important;
+    font-weight: 900 !important;
+    border-radius: 5px;
+}   
+
+.create-publication{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    span{
+        color: $gray;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .add-icon{
+        font-size: 40px;
+        height: 40px;
+        width: 40px;
+        color: $gray;
+    }
+    .add-icon:hover{
+        cursor: pointer;
+        color: $blueLighter;
+    }
+}
+
+.create-publication:hover{
+    cursor: pointer;
+    color: $blueLighter;
+    span{
+        color: $blueLighter;
+    }
+    .add-icon{
+        color: $blueLighter;
+    }
 }
 
 .second-title{

@@ -11,7 +11,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'home/:params', component: HomeComponent},
-      { path: 'publication', component: PublicationComponent},
+      { path: 'publication/:id', component: PublicationComponent},
       { path: 'create-publication', component: MakePublicationComponent},
       { path: '**', redirectTo: 'home' }
     ]

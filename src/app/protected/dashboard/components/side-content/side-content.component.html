@@ -1,5 +1,5 @@
 <div class="body-lat">
-    <div class="home" (click)="goToInitial()">
+    <div class="home" [class]="selectedId == undefined ? 'selected' : ''" (click)="goToInitial()">
         Home
     </div>
     <div class="sep"></div>
@@ -11,8 +11,15 @@
             Carreras
         </span>
     </div>
-    <div class="carreras" *ngFor="let carrera of carreras">
-        <span [class]="carrera.id == selectedId ? 'selected' : ''" (click)="select(carrera.id)">
+    <div class="create-publication" (click)="goToCreatePublication()">
+        <mat-icon class="add-icon" [class]="selectedId == -1 ? 'selected' : ''">add</mat-icon>
+        <span [class]="selectedId == -1 ? 'selected' : ''">
+            Crear publicación
+        </span>
+    </div>
+    <div class="carreras" *ngFor="let carrera of carreras; let i = index">
+        
+        <span class="item" [class]="carrera.id == selectedId ? 'selected' : ''" (click)="select(carrera.id)">
             {{carrera.name}}
         </span>
     </div>

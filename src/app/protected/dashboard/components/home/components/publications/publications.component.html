@@ -1,10 +1,11 @@
 <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image" style="background-image: url({{publication.photo_user}});"></div>
+      <div mat-card-avatar class="example-header-image" 
+      [ngStyle]="{'background-image': 'url(' + (publication.photo_user ? publication.photo_user : 'assets/icons/no-user-image.png') + ')'}"></div>
       <mat-card-title>{{publication.username}}</mat-card-title>
       <mat-card-subtitle>{{publication.created}}</mat-card-subtitle>
       <div class="title">
-        <span class="info-title">
+        <span class="info-title" (click)="goToPublication()">
           {{publication.title.length > 50 ? publication.title.substring(0, 50) + '...' : publication.title}}
         </span>
       </div>

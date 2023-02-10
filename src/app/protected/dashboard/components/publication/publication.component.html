@@ -1,3 +1,191 @@
-<mat-icon>
-    search
-</mat-icon>
+<div class="container">
+
+    <div class="prguntas-respuesas">
+
+        <mat-card class="card-preg-title">
+            <mat-card-title class="preg-title">
+                <span>Pregunta</span>
+            </mat-card-title>
+        </mat-card>
+
+        <mat-card class="pregunta">
+
+            <div class="date">
+                <span>
+                    12/12/2019
+                </span>
+            </div>
+    
+            <div class="sup">
+                <div class="user">
+                    <div class="img">
+                        <img [src]="details?.photo_user ? details?.photo_user : 'assets/icons/no-user-image.png'" alt="">
+                    </div>
+                    <div class="name">
+                        <span>
+                            {{details?.username}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="principal-content">
+                <div class="title">
+                    <span>
+                        {{details?.title}}
+                    </span>
+                </div>
+                <div class="rates">
+                    <a class="like">
+                        <mat-icon>
+                            expand_less
+                        </mat-icon>
+                    </a>
+                    <a class="dislike">
+                        <mat-icon>
+                        
+                        expand_more
+                    </mat-icon>
+                </a>
+                </div>
+            </div>
+    
+            <div class="description">
+                <span>
+                    {{details?.description}}
+                </span>
+                <div class="score">
+                    <span class="cursor" (click)="loadComents(details?.commentsList)">
+                        comentarios...
+                    </span>
+                    <span [class]="(score < 0) ? 'red' : 'blue'">
+                        {{details?.score}}
+                    </span>
+                </div>
+            </div>
+    
+        </mat-card>
+    
+        <mat-card class="card-resp-title">
+            <mat-card-title class="resp-title">
+                <span>Respuestas</span>
+            </mat-card-title>
+        </mat-card>
+
+        <mat-card *ngIf="responseList.length == 0" class="card-resp-title">
+            <mat-card-title class="resp-title">
+                <span>No hay respuestas...</span>
+            </mat-card-title>
+        </mat-card>
+
+        <ng-container *ngFor="let respuesta of responseList">
+
+            <mat-card class="respuesta">
+                <div class="date">
+                    <span>
+                        12/12/2019
+                    </span>
+                </div>
+                <div class="sup">
+                    <div class="user">
+                        <div class="img">
+                            <img [src]=" respuesta.photo_user ? respuesta.photo_user : 'assets/icons/no-user-image.png' " alt="">
+                        </div>
+                        <div class="name">
+                            <span>
+                                {{respuesta?.username}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="principal-content">
+                    <div class="title-comment">
+                        <span>
+                            {{respuesta?.description}}}
+                        </span>
+                    </div>
+                    <div class="rates">
+                        <a class="like">
+                            <mat-icon>
+                                expand_less
+                            </mat-icon>
+                        </a>
+                        <a class="dislike">
+                            <mat-icon>
+                            
+                            expand_more
+                        </mat-icon>
+                    </a>
+                    </div>
+                </div>
+                <div class="coments">
+                    <span class="cursor" (click)="loadComents(respuesta.commentsList)">
+                        comentarios...
+                    </span>
+                </div>
+            </mat-card>
+
+        </ng-container>
+        
+    </div>
+
+    <div class="comentarios">
+
+        <mat-card class="card-coment-title">
+            <mat-card-title class="coment-title">
+                <span>Comentarios</span>
+            </mat-card-title>
+        </mat-card>
+
+        <mat-card *ngIf="showComents == null" class="card-coment-title">
+            <mat-card-title class="coment-title">
+                <span>No hay comentarios</span>
+            </mat-card-title>
+        </mat-card>
+
+
+        <ng-container *ngFor="let coment of showComents">
+
+            <mat-card class="comentario">
+                <div class="date">
+                    <span>
+                        {{coment.updated ? coment.updated : coment.created}}
+                    </span>
+                </div>
+                <div class="sup">
+                    <div class="user">
+                        <div class="img">
+                            <img src="assets/icons/no-user-image.png" alt="">
+                        </div>
+                        <div class="name">
+                            <span>
+                                Yerson
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="principal-content">
+                    <div class="title-comment">
+                        <span>
+                            {{coment.description}}
+                        </span>
+                    </div>
+                    <div class="rates">
+                        <a class="like">
+                            <mat-icon>
+                                expand_less
+                            </mat-icon>
+                        </a>
+                        <a class="dislike">
+                            <mat-icon>
+                            
+                            expand_more
+                        </mat-icon>
+                    </a>
+                    </div>
+                </div>
+            </mat-card>
+
+        </ng-container>
+    </div>
+
+</div>

@@ -1,0 +1,204 @@
+@import 'variables';
+
+.prguntas-respuesas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    border-right: 1px solid $blueLighter;
+    width: calc(100vw - 325px - 400px);
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.red{
+    color: red;
+}
+
+.blue{
+    color: #3f51b5;
+}
+
+.respuesta{
+    margin-top: 20px;
+    width: 500px;
+}
+
+.card-resp-title{
+    margin-top: 20px;
+    width: 500px;
+}
+
+.resp-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-preg-title{
+    width: 600px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.preg-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-coment-title{
+    width: 400px;
+    margin-top: 20px;
+    position: sticky;
+    top: calc(64px + 20px);
+}
+
+.coment-title{
+    position: sticky;
+    top: calc(64px + 20px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comentarios{
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    top: 64px;
+}
+
+.comentario{
+    position: sticky;
+    top: calc(72px + 64px);
+    margin-top: 20px;
+    width: 400px;
+}
+
+.title-comment{
+    padding: 10px;
+    color:#808080;
+    width: 100%;
+}
+
+.principal-content{
+    display: flex;
+    flex-direction: row;
+    .title{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            font-size: 16px;
+            font-weight: bold;
+            color: #808080;
+        }
+    }
+    
+    .rates{
+        display: flex;
+        flex-direction: column;
+        width: 50px;
+        height: 60px;
+    }
+}
+
+.like:hover {
+    color: #3f51b5;
+    cursor: pointer;
+}
+
+.dislike:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.coments{
+    padding-left: 10px;
+    span{
+        font-size: 14px;
+        color: $blueLighter;
+        font-weight: bold;
+    }
+}
+
+.cursor:hover{
+    cursor: pointer;
+}
+
+.description{
+    padding-left: 20px;
+    padding-right: 20px;
+    span{
+        font-size: 14px;
+        color: #808080;
+    }
+    .score{
+        display: flex;
+        justify-content: space-between;
+        span{
+            font-size: 14px;
+            color: $blueLighter;
+            font-weight: bold;
+        }
+        margin-bottom: 5px;
+    }
+}
+
+.date{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    height: 1px;
+    span{
+        margin-top: 10px;
+        margin-right: 10px;
+        color: #808080;
+    }
+}
+
+.pregunta{
+    margin-top: 20px;
+    width: 600px;
+    height: max-content;
+    margin-left: 20px;
+}
+
+.name{
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+}
+
+.user{
+    display: flex;
+
+}
+
+.sup{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+img{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;    
+}
