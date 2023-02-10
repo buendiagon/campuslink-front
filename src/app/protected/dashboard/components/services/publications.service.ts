@@ -23,8 +23,8 @@ export class PublicationsService {
     return this.http.post(this.url, publication);
   }
 
-  getPublicationsByCareer(criterio:string){
-    return this.http.get<Input>(this.url+`/id_career/${criterio}?page=0&size=20`);
+  getPublicationsByCareer(criterio:string,page:number, size:number){
+    return this.http.get<Input>(this.url+`/id_career/${criterio}?page=${page}&size=${size}`);
   }
 
 }

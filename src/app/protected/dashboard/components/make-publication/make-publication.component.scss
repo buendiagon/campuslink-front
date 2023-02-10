@@ -1,13 +1,13 @@
 @import 'variables';
 
 .form-content{
-    width: 100vw;
-    height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     .title{
+        margin-top: 40px;
         font-size: 26px;
         margin-bottom: 20px;
         color: $gray;

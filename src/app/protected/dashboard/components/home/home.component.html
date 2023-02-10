@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body" infiniteScroll (scrolled)="onScrollDown()">
   <div class="create-publication">
     <mat-icon class="add-icon" (click)="goToCreatePublication()">add</mat-icon>
   </div>
@@ -8,10 +8,21 @@
     </div>
     
   </div>
+
+  <div class="no-publication">
+    <span *ngIf="publications.length == 0">
+      No hay publicaciones
+    </span>
+  </div>
   <div class="publication" *ngFor="let publication of publications">
 
     <app-publications [publication]="publication">
     </app-publications>
     
   </div>
+
+  <button class="button" *ngIf="showButton" (click)="onScrollTop()">
+    UP
+  </button>
+
 </div>

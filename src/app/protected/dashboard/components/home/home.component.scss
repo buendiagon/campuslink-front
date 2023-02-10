@@ -1,6 +1,7 @@
 @import 'variables';
 
 .body{
+  scroll-behavior: smooth;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
@@ -17,6 +18,23 @@
         font-size: 26px;
       }
     }
+}
+
+.no-publication{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .title{
+    color: #808080;
+    font-size: 26px;
+  }
+  .subtitle{
+    color: #808080;
+    font-size: 20px;
+  }
 }
 
 .create-publication{
@@ -45,4 +63,11 @@
     flex-direction: row;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+
+.button{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

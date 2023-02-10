@@ -22,7 +22,7 @@ export class SideContentComponent implements OnInit {
   ngOnInit(): void {
 
     this.carrerService.loadCarrers();
-    
+
     this.carrerService.carreras.subscribe( resp => {
       this.carreras = resp;
     })
@@ -40,7 +40,12 @@ export class SideContentComponent implements OnInit {
 
     goToInitial(){
       this.router.navigate(['/dashboard/home/initial']);
+      this.selectedId = undefined;
+    }
 
+    goToCreatePublication(){
+      this.selectedId = -1;
+      this.router.navigate(['/dashboard/create-publication']);
     }
 
 

@@ -1,7 +1,7 @@
 <app-layout class="layout"></app-layout>
 
 <div class="body">
-    <ng-container *ngIf="section == 'home'">
+    <ng-container>
         <div class="side-content">
             <app-side-content></app-side-content>
         </div>
@@ -11,8 +11,8 @@
         </router-outlet>
         </div>
     </ng-container>
-    <ng-container *ngIf="section == 'create-publication'">
+    <!-- <ng-container *ngIf="section == 'create-publication'">
         <router-outlet>
         </router-outlet>
-    </ng-container>
+    </ng-container> -->
 </div>

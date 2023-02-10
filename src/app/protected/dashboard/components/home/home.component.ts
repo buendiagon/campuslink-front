@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, EventEmitter, HostListener, Inject, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Input, Publication } from '../interfaces/inputs.interface';
@@ -14,20 +15,52 @@ export class HomeComponent implements OnInit {
 
   inputs! : Input;
 
-  publications!: Publication[];
+  @Output() toMakePublication = new EventEmitter<Publication[]>();
+
+  publications  : Publication[] = [];
+
+  showButton = false;
+
+  size = 10;
+
+  page = 0;
 
   constructor (
     private authServcie : AuthService,
     private publicationService : PublicationsService,
     private urlRouter: ActivatedRoute,
     private router: Router,
-    private careerService: CarrerService
+    private careerService: CarrerService,
+    @Inject(DOCUMENT) private document: Document
     
   ) { }
+
+  @HostListener('window:scroll')
+
+  onWindowScroll() {
+    const yOffSet = window.pageYOffset;
+    const scrollTop = this.document.documentElement.scrollTop;
+
+    this.showButton = (yOffSet || scrollTop) > 500;
+
+  }
+
+  onScrollTop() {
+    this.document.documentElement.scrollTop = 0;
+  }
+
+  onScrollDown() {
+    this.page++;
+    console.log(this.page);
+    
+    this.addPublications();
+
+  }
 
   ngOnInit(): void {
 
     this.urlRouter.paramMap.subscribe( params => {
+      this.page = 0;
       const criterios = params.get('params');
       this.busqueda(criterios || '');
     })
@@ -38,9 +71,10 @@ export class HomeComponent implements OnInit {
     if(criterio.includes('career-')) {
       const consulta = criterio.split('-')[1]
       this.careerService.selectedId.next(Number(consulta));
-      this.publicationService.getPublicationsByCareer(consulta).subscribe( (resp: Input) => {
+      this.publicationService.getPublicationsByCareer(consulta,this.page,this.size).subscribe( (resp: Input) => {
         this.inputs = resp
         this.publications = this.inputs.publications;
+        console.log(resp);
       })
     }
     else{
@@ -50,7 +84,8 @@ export class HomeComponent implements OnInit {
   }
 
   loadAllPublications(){
-    this.publicationService.getPublications(0, 10).subscribe( (resp: Input) => {
+    this.careerService.selectedId.next(undefined);
+    this.publicationService.getPublications(this.page, this.size).subscribe( (resp: Input) => {
       this.inputs = resp
       this.publications = this.inputs.publications;
     })
@@ -60,6 +95,28 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/dashboard/create-publication']);
   }
 
+  addPublications(){
+    //añadir publicaciones en una carrera especifica
+    console.log(this.careerService.selectedId.value)
+    if(this.careerService.selectedId.value){
+      this.publicationService.getPublicationsByCareer(this.careerService.selectedId.value.toString(),this.page,this.size).subscribe( (resp: Input) => {
+        this.inputs = resp
+        this.publications.push(...this.inputs.publications);
+      })
+    }
+    else{
+      this.publicationService.getPublications(this.page, this.size).subscribe( (resp: Input) => {
+        this.inputs = resp
+        this.publications.push(...this.inputs.publications);
+      })
+    }
+  }
+
+  
+  show(algo:any)
+  {
+    console.log(algo);
+  }
   
 
 }
