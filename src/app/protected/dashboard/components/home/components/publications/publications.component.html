@@ -1,1 +1,24 @@
-<p>publications works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" style="background-image: url({{publication.photo_user}});"></div>
+      <mat-card-title>{{publication.username}}</mat-card-title>
+      <mat-card-subtitle>{{publication.created}}</mat-card-subtitle>
+      <div class="title">
+        <span class="info-title">
+          {{publication.title.length > 50 ? publication.title.substring(0, 50) + '...' : publication.title}}
+        </span>
+      </div>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content class="main-content">
+      <p class="content">
+        {{
+          content.length > 200
+            ? content.substring(0, 200) + '...'
+            : content
+        }}
+      </p>
+    </mat-card-content>
+
+  </mat-card>
+

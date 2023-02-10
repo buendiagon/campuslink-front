@@ -15,15 +15,6 @@ export class SpinnerComponent implements OnInit {
     private showSpinnerService: ShowSpinnerService
   ) { }
   ngOnInit(): void {
-    
-    this.isloading$.subscribe((data) => {
-      console.log('puta mierda')
-    })
-
-    // this.isloading$ = this.spinnerService.isloading$;
-    // this.
-    // console.log('cambio desde componente')
-    // this.spinnerService.hide(); 
   }
 
 }

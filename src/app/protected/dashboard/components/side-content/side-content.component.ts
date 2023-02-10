@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { career } from '../home/interfaces/career.interface';
 import { CarrerService } from '../services/carrer.service';
 
@@ -14,12 +15,33 @@ export class SideContentComponent implements OnInit {
   carreras : career[] = [];
 
   constructor(
-    private carrerService : CarrerService
+    private carrerService : CarrerService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.carrerService.getCarrers().subscribe((data:career[])=>{
-      this.carreras = data;
-    })}
+
+    this.carrerService.loadCarrers();
+    
+    this.carrerService.carreras.subscribe( resp => {
+      this.carreras = resp;
+    })
+
+    this.carrerService.selectedId.subscribe( resp => {
+      this.selectedId = resp;
+    })
+    
+    }
+
+    select(id: number){
+      this.selectedId = id;
+      this.router.navigate(['/dashboard/home/career-'+id]);
+    }
+
+    goToInitial(){
+      this.router.navigate(['/dashboard/home/initial']);
+
+    }
+
 
 }

@@ -14,10 +14,7 @@ export class SpinnerService implements HttpInterceptor {
   constructor(
     private showSpinnerService: ShowSpinnerService
   ) { 
-    // this.isloading$.subscribe((data) => {
-    //   console.log('SpinnerComponent: ngOnInit: data: ', data);
-    // }
-    // );
+
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

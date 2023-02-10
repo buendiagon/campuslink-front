@@ -34,7 +34,7 @@ export class LoginComponent {
 
     this.authService.login(this.login.value).subscribe( (resp: any) => {
       if(resp) {
-        this.router.navigate(['/dashboard/home']);
+        this.router.navigate(['/dashboard/home/initial']);
       }
       else {
         Swal.fire('Error', 'Usuario o contraseña incorrectos', 'error');

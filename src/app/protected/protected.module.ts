@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProtectedRoutingModule } from './protected-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -9,6 +9,7 @@ import { PublicationsComponent } from './dashboard/components/home/components/pu
 import { PublicationComponent } from './dashboard/components/publication/publication.component';
 import { HomeComponent } from './dashboard/components/home/home.component';
 import { SideContentComponent } from './dashboard/components/side-content/side-content.component';
+import { MakePublicationComponent } from './dashboard/components/make-publication/make-publication.component';
 
 
 @NgModule({
@@ -18,13 +19,15 @@ import { SideContentComponent } from './dashboard/components/side-content/side-c
     HomeComponent,
     PublicationComponent,
     PublicationsComponent,
-    SideContentComponent
+    SideContentComponent,
+    MakePublicationComponent
   ],
   imports: [
     CommonModule,
     ProtectedRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProtectedModule { }
