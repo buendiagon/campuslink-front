@@ -12,6 +12,7 @@ export class PublicationsComponent implements OnInit {
 
   @Input() publication!: Publication;
   content: string = '';
+  title: string = '';
 
   constructor(
     private router: Router,
@@ -19,10 +20,13 @@ export class PublicationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.publication)
-    this.content = this.publication.description;
+
+    this.content = this.publication.description || '';
+
+    this.title = this.publication.title || '';
 
   }
+
 
   goToPublication(){
     this.router.navigate(['/dashboard/publication', this.publication.id]);
