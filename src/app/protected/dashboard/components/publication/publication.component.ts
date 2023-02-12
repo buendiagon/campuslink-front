@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommentsList, Details, Responseslist } from '../interfaces/detail.iterface';
+import { finalize, tap } from 'rxjs';
+import Swal from 'sweetalert2';
+import { CommentsList, Details, Responseslist, CommentsList2 } from '../interfaces/detail.iterface';
 import { ComentariosService } from '../services/comentarios.service';
 
 @Component({
@@ -14,9 +16,15 @@ export class PublicationComponent implements OnInit {
 
   details : Details | null = null;
 
-  showComents: CommentsList[] = [];
+  showComents: CommentsList[] | CommentsList2[] = [];
 
   responseList: Responseslist[] = [];
+
+  respuesta = '';
+
+  comentario = '';
+
+  selectedDetailcoment!: number | undefined;
 
   score = 0;
 
@@ -32,18 +40,97 @@ export class PublicationComponent implements OnInit {
     });
 
     this.comentarioService.details.subscribe((data: any) => {
+      if(this.details?.id != data?.id)
+      {
+        this.selectedDetailcoment = undefined;
+      }
       this.details = data;
-      console.log(this.details);
-      this.showComents = this.details?.commentsList || [];
-      console.log(this.showComents);
-      this.score = this.details?.score || 0;
       this.responseList = this.details?.responseslist || [];
+      if(this.selectedDetailcoment == undefined){
+        this.selectedDetailcoment = this.details?.id || undefined;
+        this.showComents = this.details?.commentsList || [];
+      }
+      else{
+        if(this.idPublication == this.selectedDetailcoment){
+          this.showComents = this.details?.commentsList || [];
+        }
+        else{
+          this.showComents = this.responseList.find((item: any) => item.id == this.selectedDetailcoment)?.commentsList || [];
+        }
+      }
+      this.score = this.details?.score || 0;
     });
   }
 
-  loadComents(comentarios : any){
+  sendResponse(){
+    if(this.respuesta.length > 0){
+      const body = {
+        id_parent: this.details?.id,
+        title: '',
+        description: this.respuesta,
+        id_career: this.details?.id_career,
+        is_question: false,
+      }
+      this.comentarioService.createResponse(body).subscribe((data: any) => {
+        this.respuesta = '';
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 500
+        })
+
+        this.comentarioService.setDetails(this.idPublication);
+      });
+    }
+  }
+
+  loadComents(comentarios : any, id:any){
     this.showComents = comentarios;
-    console.log(this.showComents)
+    this.selectedDetailcoment = id;
+  }
+
+  sendBadScore(id: any){
+
+    const body = {
+      id_input: id,
+      is_positive: false,
+    }
+
+    this.comentarioService.createRate(body).subscribe();
+  }
+
+  sendGoodScore(id: any){
+    const body = {
+      id_input: id,
+      is_positive: true,
+    }
+
+    this.comentarioService.createRate(body).subscribe();
+  }
+
+  sendComment(){
+    const body = {
+      id_input: this.selectedDetailcoment,
+      description: this.comentario,
+    }
+
+    console.log(body);
+
+    this.comentarioService.createComment(body).subscribe((data: any) => {
+      this.comentario = '';
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 500
+      })
+
+      this.comentarioService.setDetails(this.idPublication);
+    }
+    );
   }
 
 }

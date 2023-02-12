@@ -27,4 +27,12 @@ export class PublicationsService {
     return this.http.get<Input>(this.url+`/id_career/${criterio}?page=${page}&size=${size}`);
   }
 
+  createResponse(body:any){
+    return this.http.post(this.url, body);
+  }
+
+  getPublicationsBySearch(criterio:string){
+    return this.http.get<Input>(this.url+`/search?search=${criterio}`);
+  }
+
 }

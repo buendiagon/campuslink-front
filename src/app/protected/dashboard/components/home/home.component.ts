@@ -50,8 +50,10 @@ export class HomeComponent implements OnInit {
   }
 
   onScrollDown() {
+    if(this.careerService.selectedId.value == -5){
+      return
+    }
     this.page++;
-    console.log(this.page);
     
     this.addPublications();
 
@@ -74,8 +76,17 @@ export class HomeComponent implements OnInit {
       this.publicationService.getPublicationsByCareer(consulta,this.page,this.size).subscribe( (resp: Input) => {
         this.inputs = resp
         this.publications = this.inputs.publications;
-        console.log(resp);
       })
+    }
+    else if(criterio.includes('search-'))
+    {
+      const consulta = criterio.split('-')[1]
+      console.log(consulta)
+      this.careerService.selectedId.next(-5);
+      this.publicationService.getPublicationsBySearch(consulta).subscribe( (resp: any) => {
+        console.log(resp)
+        this.publications = resp;
+      });
     }
     else{
       this.router.navigate(['/dashboard/home/initial']);
@@ -97,7 +108,6 @@ export class HomeComponent implements OnInit {
 
   addPublications(){
     //añadir publicaciones en una carrera especifica
-    console.log(this.careerService.selectedId.value)
     if(this.careerService.selectedId.value){
       this.publicationService.getPublicationsByCareer(this.careerService.selectedId.value.toString(),this.page,this.size).subscribe( (resp: Input) => {
         this.inputs = resp
@@ -115,7 +125,6 @@ export class HomeComponent implements OnInit {
   
   show(algo:any)
   {
-    console.log(algo);
   }
   
 

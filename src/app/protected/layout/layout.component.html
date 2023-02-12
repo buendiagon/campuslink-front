@@ -32,7 +32,7 @@
     <div class="r-content">
       <mat-form-field class="search-field gray">
         <mat-label>Buscar...</mat-label>
-        <input class="blackStrong" matInput type="text" [(ngModel)]="value">
+        <input class="blackStrong" matInput type="text" (keydown.enter)="search()" [(ngModel)]="value">
         <button class="gray" matSuffix mat-icon-button aria-label="Clear" (click)="search()">
           <mat-icon>search</mat-icon>
         </button>

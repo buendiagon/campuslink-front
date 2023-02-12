@@ -31,6 +31,7 @@ export class LayoutComponent implements OnInit {
   selectedCarrer!: Carrera;
 
   search(){
+    this.router.navigate(['/dashboard/home/search-'+this.value]);
   }
 
   selectCarrera(carrera: Carrera){}
