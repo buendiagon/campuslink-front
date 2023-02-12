@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-    border-right: 1px solid $blueLighter;
     width: calc(100vw - 325px - 400px);
 }
 
@@ -13,7 +12,6 @@
     height: 100%;
     width: 100%;
     display: flex;
-    align-items: center;
     flex-direction: row;
 }
 
@@ -48,6 +46,31 @@
     margin-top: 20px;
 }
 
+.comentario-container{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hacer-comentario{
+    width: 400px;
+    margin-top: 20px;
+    height: 100px;
+}
+
+.send-two{
+    position: relative;
+    top: -80px;
+    right: -180px;
+    color: #808080;
+}
+
+.send-two:hover{
+    color: $blueLighter;
+    cursor: pointer;
+}
+
 .preg-title{
     width: 100%;
     display: flex;
@@ -58,8 +81,7 @@
 .card-coment-title{
     width: 400px;
     margin-top: 20px;
-    position: sticky;
-    top: calc(64px + 20px);
+
 }
 
 .coment-title{
@@ -73,17 +95,17 @@
 
 .comentarios{
     width: 500px;
-    height: 100%;
+    height: calc(100vh);
+    position: fixed;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: sticky;
-    top: 64px;
+    border-left: 1px solid $blueLighter;
+	overflow-y: scroll; 
 }
 
 .comentario{
-    position: sticky;
-    top: calc(72px + 64px);
     margin-top: 20px;
     width: 400px;
 }
@@ -135,6 +157,25 @@
         color: $blueLighter;
         font-weight: bold;
     }
+}
+
+.send{
+    position: relative;
+    top: 0;
+    right: 35px;
+    color: #808080;
+}
+
+.send:hover{
+    color: $blueLighter;
+    cursor: pointer;
+}
+
+.hacer-respuesta{
+    width: 600px;
+    margin-left: 40px;
+    margin-top: 20px;
+    height: 100px;
 }
 
 .cursor:hover{

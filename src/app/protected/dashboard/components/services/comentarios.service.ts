@@ -28,4 +28,17 @@ export class ComentariosService {
     });
   }
 
+
+  createResponse(body:any){
+    return this.http.post(this.url, body);
+  }
+
+  createComment(body:any){
+    return this.http.post(this.url+'/comments', body);
+  }
+
+  createRate(body:any){
+    return this.http.post(this.url+'/score', body);
+  }
+
 }

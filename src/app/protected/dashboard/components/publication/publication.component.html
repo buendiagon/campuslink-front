@@ -12,7 +12,7 @@
 
             <div class="date">
                 <span>
-                    12/12/2019
+                    {{details?.updated ? details?.updated : details?.created}}
                 </span>
             </div>
     
@@ -35,12 +35,16 @@
                     </span>
                 </div>
                 <div class="rates">
-                    <a class="like">
+                    <a 
+                    (click)="sendGoodScore(details?.id)"
+                    class="like">
                         <mat-icon>
                             expand_less
                         </mat-icon>
                     </a>
-                    <a class="dislike">
+                    <a 
+                    (click)="sendBadScore(details?.id)"
+                    class="dislike">
                         <mat-icon>
                         
                         expand_more
@@ -54,7 +58,7 @@
                     {{details?.description}}
                 </span>
                 <div class="score">
-                    <span class="cursor" (click)="loadComents(details?.commentsList)">
+                    <span class="cursor" (click)="loadComents(details?.commentsList,details?.id)">
                         comentarios...
                     </span>
                     <span [class]="(score < 0) ? 'red' : 'blue'">
@@ -65,12 +69,20 @@
     
         </mat-card>
     
+        <div class="respuesta-container">
+            <mat-form-field class="hacer-respuesta">
+                <mat-label>Agrega una respuesta...</mat-label><textarea [(ngModel)]="respuesta" maxlength="400" cols="7" rows="3" matInput placeholder="Responer..."></textarea>
+            </mat-form-field>
+            <mat-icon 
+            class="send"
+            (click)="sendResponse()"
+            >send</mat-icon>
+        </div>
         <mat-card class="card-resp-title">
             <mat-card-title class="resp-title">
                 <span>Respuestas</span>
             </mat-card-title>
         </mat-card>
-
         <mat-card *ngIf="responseList.length == 0" class="card-resp-title">
             <mat-card-title class="resp-title">
                 <span>No hay respuestas...</span>
@@ -82,7 +94,7 @@
             <mat-card class="respuesta">
                 <div class="date">
                     <span>
-                        12/12/2019
+                        {{respuesta?.updated ? respuesta?.updated : respuesta?.created}}
                     </span>
                 </div>
                 <div class="sup">
@@ -100,16 +112,21 @@
                 <div class="principal-content">
                     <div class="title-comment">
                         <span>
-                            {{respuesta?.description}}}
+                            {{respuesta?.description}}
                         </span>
                     </div>
                     <div class="rates">
-                        <a class="like">
+                        <a 
+                        class="like"
+                        (click)="sendGoodScore(respuesta.id)"
+                        >
                             <mat-icon>
                                 expand_less
                             </mat-icon>
                         </a>
-                        <a class="dislike">
+                        <a 
+                        (click)="sendBadScore(respuesta.id)"
+                        class="dislike">
                             <mat-icon>
                             
                             expand_more
@@ -118,7 +135,7 @@
                     </div>
                 </div>
                 <div class="coments">
-                    <span class="cursor" (click)="loadComents(respuesta.commentsList)">
+                    <span class="cursor" (click)="loadComents(respuesta.commentsList,respuesta.id)">
                         comentarios...
                     </span>
                 </div>
@@ -135,6 +152,16 @@
                 <span>Comentarios</span>
             </mat-card-title>
         </mat-card>
+
+        <div class="comentario-container">
+            <mat-form-field class="hacer-comentario">
+                <mat-label>Agrega un comentario...</mat-label><textarea [(ngModel)]="comentario" maxlength="400" cols="7" rows="3" matInput placeholder="Comentario..."></textarea>
+            </mat-form-field>
+            <mat-icon 
+            class="send-two"
+            (click)="sendComment()"
+            >send</mat-icon>
+        </div>
 
         <mat-card *ngIf="showComents == null" class="card-coment-title">
             <mat-card-title class="coment-title">
@@ -154,11 +181,11 @@
                 <div class="sup">
                     <div class="user">
                         <div class="img">
-                            <img src="assets/icons/no-user-image.png" alt="">
+                            <img [src]=" coment.photo_user ? coment.photo_user :'assets/icons/no-user-image.png'" alt="">
                         </div>
                         <div class="name">
                             <span>
-                                Yerson
+                                {{coment.username}}
                             </span>
                         </div>
                     </div>
@@ -168,19 +195,6 @@
                         <span>
                             {{coment.description}}
                         </span>
-                    </div>
-                    <div class="rates">
-                        <a class="like">
-                            <mat-icon>
-                                expand_less
-                            </mat-icon>
-                        </a>
-                        <a class="dislike">
-                            <mat-icon>
-                            
-                            expand_more
-                        </mat-icon>
-                    </a>
                     </div>
                 </div>
             </mat-card>
