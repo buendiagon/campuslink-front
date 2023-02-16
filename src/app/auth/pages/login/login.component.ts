@@ -14,8 +14,8 @@ export class LoginComponent {
   hide = true;
 
   login: FormGroup = this.fb.group({
-    username: ['HTTM',[Validators.required, Validators.minLength(3)]],
-    password: ['campusLink', [Validators.required, Validators.minLength(5)]]
+    username: ['',[Validators.required, Validators.minLength(3)]],
+    password: ['', [Validators.required, Validators.minLength(5)]]
   });
 
   constructor(

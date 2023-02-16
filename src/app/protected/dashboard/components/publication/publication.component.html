@@ -37,14 +37,14 @@
                 <div class="rates">
                     <a 
                     (click)="sendGoodScore(details?.id)"
-                    class="like">
+                    class="like" [class]="details?.like ? 'blue' : ''">
                         <mat-icon>
                             expand_less
                         </mat-icon>
                     </a>
                     <a 
                     (click)="sendBadScore(details?.id)"
-                    class="dislike">
+                    class="dislike" [class]="details?.like == false ? 'red' : ''">
                         <mat-icon>
                         
                         expand_more
@@ -119,6 +119,7 @@
                         <a 
                         class="like"
                         (click)="sendGoodScore(respuesta.id)"
+                        [class]="respuesta?.like ? 'blue' : ''"
                         >
                             <mat-icon>
                                 expand_less
@@ -126,7 +127,9 @@
                         </a>
                         <a 
                         (click)="sendBadScore(respuesta.id)"
-                        class="dislike">
+                        class="dislike"
+                        [class]="respuesta?.like == false ? 'red' : ''"
+                        >
                             <mat-icon>
                             
                             expand_more
@@ -138,7 +141,11 @@
                     <span class="cursor" (click)="loadComents(respuesta.commentsList,respuesta.id)">
                         comentarios...
                     </span>
+                    <span class="resp-comments">
+                        {{respuesta?.score}}
+                    </span>
                 </div>
+                
             </mat-card>
 
         </ng-container>

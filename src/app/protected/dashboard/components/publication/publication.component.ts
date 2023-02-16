@@ -45,6 +45,7 @@ export class PublicationComponent implements OnInit {
         this.selectedDetailcoment = undefined;
       }
       this.details = data;
+      console.log(this.details)
       this.responseList = this.details?.responseslist || [];
       if(this.selectedDetailcoment == undefined){
         this.selectedDetailcoment = this.details?.id || undefined;
@@ -99,6 +100,7 @@ export class PublicationComponent implements OnInit {
     }
 
     this.comentarioService.createRate(body).subscribe();
+    this.comentarioService.setDetails(this.idPublication);
   }
 
   sendGoodScore(id: any){
@@ -108,6 +110,8 @@ export class PublicationComponent implements OnInit {
     }
 
     this.comentarioService.createRate(body).subscribe();
+    this.comentarioService.setDetails(this.idPublication);
+
   }
 
   sendComment(){
@@ -131,6 +135,20 @@ export class PublicationComponent implements OnInit {
       this.comentarioService.setDetails(this.idPublication);
     }
     );
+  }
+
+  mostrarRed(entrada: any): string{
+    
+    if(entrada == true){
+      return 'red';
+    }
+
+    if(entrada == false){
+      return 'blue';
+    }
+
+      return '';
+
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import Swal from 'sweetalert2';
 import { career } from '../home/interfaces/career.interface';
@@ -30,7 +31,8 @@ export class MakePublicationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private careerService: CarrerService,
-    private publicationsService: PublicationsService
+    private publicationsService: PublicationsService,
+    private router: Router,
   ) { }
   
   ngOnInit(): void {
@@ -84,6 +86,7 @@ export class MakePublicationComponent implements OnInit {
           showConfirmButton: false,
           timer: 1000
         })
+        this.router.navigateByUrl('/dashboard/home/initial');
       }
     })
   }
