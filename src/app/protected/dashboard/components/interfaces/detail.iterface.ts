@@ -13,6 +13,7 @@ export interface Details {
     responseslist: Responseslist[];
     updated?: string;
     created: string;
+    like: boolean;
   }
   
 
@@ -31,6 +32,7 @@ export interface Details {
     created: string;
     commentsList?: CommentsList2[];
     responseslist?: any;
+    like: boolean;
   }
   
  export interface CommentsList2 {

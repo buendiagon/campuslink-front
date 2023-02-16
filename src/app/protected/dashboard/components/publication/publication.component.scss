@@ -151,11 +151,16 @@
 }
 
 .coments{
+    display: flex;
+    justify-content: space-between;
     padding-left: 10px;
     span{
         font-size: 14px;
         color: $blueLighter;
         font-weight: bold;
+    }
+    .resp-comments{
+        margin-right: 10px;
     }
 }
 
@@ -190,6 +195,7 @@
         color: #808080;
     }
     .score{
+        width: 100%;
         display: flex;
         justify-content: space-between;
         span{
