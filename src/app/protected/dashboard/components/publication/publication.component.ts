@@ -99,8 +99,11 @@ export class PublicationComponent implements OnInit {
       is_positive: false,
     }
 
-    this.comentarioService.createRate(body).subscribe();
-    this.comentarioService.setDetails(this.idPublication);
+    this.comentarioService.createRate(body).pipe(
+      finalize(() => {
+        this.comentarioService.setDetails(this.idPublication);
+      })
+    ).subscribe();
   }
 
   sendGoodScore(id: any){
@@ -109,8 +112,11 @@ export class PublicationComponent implements OnInit {
       is_positive: true,
     }
 
-    this.comentarioService.createRate(body).subscribe();
-    this.comentarioService.setDetails(this.idPublication);
+    this.comentarioService.createRate(body).pipe(
+      finalize(() => {
+        this.comentarioService.setDetails(this.idPublication);
+      })
+    ).subscribe();
 
   }
 
